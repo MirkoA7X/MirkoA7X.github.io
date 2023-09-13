@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadow Enlightenment Launch Countdown</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: url('Gbackground.svg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .countdown-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      padding: 20px; /* Reduced padding for mobile */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+    .countdown-title {
+      font-size: 50px; /* Reduced font size for mobile */
+      color: gold; /* Golden color */
+      margin-bottom: 10px; /* Reduced margin for mobile */
+    }
+    .countdown-timer {
+      font-size: 40px; /* Reduced font size for mobile */
+      font-weight: bold;
+      color: gold; /* Golden color */
+      margin-bottom: 10px; /* Reduced margin for mobile */
+    }
+    .logo {
+      max-width: 60%;
+      height: auto;
+      margin-bottom: 10px; /* Reduced margin for mobile */
+    }
+    .copywrite-text {
+      font-size: 16px; /* Reduced font size for mobile */
+      color: gold; /* Golden color */
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .interest-box {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      padding: 20px; /* Reduced padding for mobile */
+      text-align: center;
+      margin-top: 20px;
+    }
+    .interest-text {
+      font-size: 18px; /* Reduced font size for mobile */
+      color: gold; /* Golden color */
+      margin-bottom: 15px; /* Reduced margin for mobile */
+    }
+    .btn-yes,
+    .btn-no {
+      margin-right: 10px;
+      font-size: 14px; /* Reduced font size for mobile */
+      padding: 10px 15px; /* Reduced padding for mobile */
+    }
+    .btn-yes {
+      background-color: gold; /* Golden color */
+      color: #000;
+    }
+    .btn-no {
+      background-color: #333;
+      color: gold; /* Golden color */
+    }
+
+    /* Media query for mobile devices */
+    @media (max-width: 767px) {
+      .countdown-title {
+        font-size: 18px;
+      }
+      .countdown-timer {
+        font-size: 30px;
+      }
+      .logo {
+        max-width: 100%;
+      }
+      .copywrite-text {
+        font-size: 14px;
+      }
+      .interest-text {
+        font-size: 16px;
+      }
+      .btn-yes,
+      .btn-no {
+        font-size: 12px;
+        padding: 10px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="container">
+
+
+  <div class="row justify-content-center">
+
+
+    <div class="col-lg-8">
+
+
+      <div class="countdown-container">
+
+
+        <h1 class="countdown-title"></h1>
+
+        <img src="ShadowEnlightenment-min.gif" alt="Logo" class="logo">
+
+
+        <!-- Placeholder for logo (change the src attribute to your logo path) -->
+
+
+        <p class="copywrite-text">
+        </p>
+      </div>
+
+
+      <!-- Interest box for seeing progress -->
+      <div class="interest-box">
+        <div class="countdown-timer" id="timer">00:00:00:00</div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  // Countdown to Launch Day
+  const launchDate = new Date('2023-09-30T23:59:59'); // Set the launch date and time
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('timer').textContent = `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+    if (distance < 0) {
+      clearInterval(countdownInterval);
+      document.getElementById('timer').textContent = 'Shadow Enlightenment Has Launched!';
+    }
+  }
+
+  const countdownInterval = setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+</body>
+</html>
